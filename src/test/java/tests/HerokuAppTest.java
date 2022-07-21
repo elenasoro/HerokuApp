@@ -5,9 +5,6 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.Collection;
-import java.util.Set;
-
 public class HerokuAppTest extends BaseTest {
 
     @Test

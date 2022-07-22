@@ -5,33 +5,37 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.InputsPage;
 
 public class InputTest extends BaseTest{
 
     @Test
     public void enterPositiveNumberTest() {
-        driver.get(Urls.INPUTS_URL);
-        driver.findElement(By.tagName("input")).sendKeys(Keys.UP);
-        driver.findElement(By.tagName("input")).sendKeys(Keys.UP);
-        String numberEntered = driver.findElement(By.tagName("input")).getAttribute("value");
+        InputsPage inputsPage = new InputsPage(driver);
+        inputsPage.openInputsPage();
+        inputsPage.sendUpKey();
+        inputsPage.sendUpKey();
+        String numberEntered = inputsPage.getInputValue();
         Assert.assertEquals("2", numberEntered, "Incorrect number");
     }
 
     @Test
     public void enterNegativeNumberTest() {
-        driver.get(Urls.INPUTS_URL);
-        driver.findElement(By.tagName("input")).sendKeys(Keys.DOWN);
-        driver.findElement(By.tagName("input")).sendKeys(Keys.DOWN);
-        String numberEntered = driver.findElement(By.tagName("input")).getAttribute("value");
+        InputsPage inputsPage = new InputsPage(driver);
+        inputsPage.openInputsPage();
+        inputsPage.sendDownKey();
+        inputsPage.sendDownKey();
+        String numberEntered = inputsPage.getInputValue();
         Assert.assertEquals("-2", numberEntered, "Incorrect number");
     }
 
     @Test
     public void enterZeroNumberTest() {
-        driver.get(Urls.INPUTS_URL);
-        driver.findElement(By.tagName("input")).sendKeys(Keys.DOWN);
-        driver.findElement(By.tagName("input")).sendKeys(Keys.UP);
-        String numberEntered = driver.findElement(By.tagName("input")).getAttribute("value");
+        InputsPage inputsPage = new InputsPage(driver);
+        inputsPage.openInputsPage();
+        inputsPage.sendDownKey();
+        inputsPage.sendUpKey();
+        String numberEntered = inputsPage.getInputValue();
         Assert.assertEquals("0", numberEntered, "Incorrect number");
     }
 }

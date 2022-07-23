@@ -4,36 +4,41 @@ import constants.Urls;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.CheckBoxPage;
 
 public class CheckBoxTest extends BaseTest {
 
     @Test
     public void firstCheckboxUncheckedTest() {
-        driver.get(Urls.CHECKBOXES_URL);
-        boolean isChecked = driver.findElement(By.xpath("//form[@id='checkboxes']/input[1]")).isSelected();
+        CheckBoxPage checkBoxPage = new CheckBoxPage(driver);
+        checkBoxPage.openCheckBoxPage();
+        boolean isChecked = checkBoxPage.isFirstCheckboxSelected();
         Assert.assertFalse(isChecked, "Checkbox is checked");
     }
 
     @Test
     public void checkFirstCheckboxTest() {
-        driver.get(Urls.CHECKBOXES_URL);
-        driver.findElement(By.xpath("//form[@id='checkboxes']/input[1]")).click();
-        boolean isChecked = driver.findElement(By.xpath("//form[@id='checkboxes']/input[1]")).isSelected();
+        CheckBoxPage checkBoxPage = new CheckBoxPage(driver);
+        checkBoxPage.openCheckBoxPage();
+        checkBoxPage.selectFirstCheckbox();
+        boolean isChecked = checkBoxPage.isFirstCheckboxSelected();
         Assert.assertTrue(isChecked, "Checkbox is unchecked");
     }
 
     @Test
     public void secondCheckboxCheckedTest() {
-        driver.get(Urls.CHECKBOXES_URL);
-        boolean isChecked = driver.findElement(By.xpath("//form[@id='checkboxes']/input[2]")).isSelected();
+        CheckBoxPage checkBoxPage = new CheckBoxPage(driver);
+        checkBoxPage.openCheckBoxPage();
+        boolean isChecked = checkBoxPage.isSecondCheckboxSelected();
         Assert.assertTrue(isChecked, "Checkbox is unchecked");
     }
 
     @Test
     public void checkSecondCheckboxTest() {
-        driver.get(Urls.CHECKBOXES_URL);
-        driver.findElement(By.xpath("//form[@id='checkboxes']/input[2]")).click();
-        boolean isChecked = driver.findElement(By.xpath("//form[@id='checkboxes']/input[2]")).isSelected();
+        CheckBoxPage checkBoxPage = new CheckBoxPage(driver);
+        checkBoxPage.openCheckBoxPage();
+        checkBoxPage.selectSecondCheckbox();
+        boolean isChecked = checkBoxPage.isSecondCheckboxSelected();
         Assert.assertFalse(isChecked, "Checkbox is checked");
     }
 }

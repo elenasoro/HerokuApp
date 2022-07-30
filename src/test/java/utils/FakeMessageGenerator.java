@@ -26,4 +26,9 @@ public class FakeMessageGenerator {
         Faker faker = new Faker();
         return faker.letterify("???@1");
     }
+
+    public static String generateText() {
+        Faker faker = new Faker();
+        return faker.letterify("???????");
+    }
 }

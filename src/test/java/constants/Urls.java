@@ -10,4 +10,5 @@ public class Urls {
         public static final String NOTIFICATION_URL = "http://the-internet.herokuapp.com/notification_message_rendered";
         public static final String TABLES_URL = "https://the-internet.herokuapp.com/tables";
         public static final String DRAGDROP_URL = "https://jqueryui.com/droppable/";
+        public static final String FILEUPLOAD_URL = "http://the-internet.herokuapp.com/upload";
 }
